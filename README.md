@@ -17,6 +17,7 @@
 
 ## :pushpin: Projects
 ### 1. [velo9](https://github.com/team-express/velo9)
+[예시로 만든 프로젝트 상세 설명 링크](https://github.com/team-express/velo9)
 >블로그 서비스 '벨로그'를 벤치마킹한 개인용 블로그 서비스  
 >개발 기간: 2022.2.21 ~ 2022.4.16  
 >  

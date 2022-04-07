@@ -1,6 +1,6 @@
 # :pushpin: velo9
 >블로그 서비스 '벨로그'를 벤치마킹한 개인용 블로그 서비스
->https://go-quality.dev  
+>https://velo9.com  
 
 </br>
 
@@ -45,18 +45,18 @@
 ### 4.2. 사용자 요청
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
 
-- **URL 정규식 체크** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b587bbff4dce02e3bec4f4787151a9b6fa326319/frontend/src/components/PostInput.vue#L67)
+- **URL 정규식 체크** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
   - Vue.js로 렌더링된 화면단에서, 사용자가 등록을 시도한 URL의 모양새를 정규식으로 확인합니다.
   - URL의 모양새가 아닌 경우, 에러 메세지를 띄웁니다.
 
-- **Axios 비동기 요청** :pushpin: [코드 확인]()
+- **Axios 비동기 요청** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
   - URL의 모양새인 경우, 컨텐츠를 등록하는 POST 요청을 비동기로 날립니다.
 
 ### 4.3. Controller
 
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png)
 
-- **요청 처리** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b2c5e60761b6308f14eebe98ccdb1949de6c4b99/src/main/java/goQuality/integerous/controller/PostRestController.java#L55)
+- **요청 처리** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
   - Controller에서는 요청을 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
 
 - **결과 응답** :pushpin: [코드 확인]()
@@ -387,4 +387,4 @@ public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
 </br>
 
 ## 6. 회고 / 느낀점
->프로젝트 개발 회고 글: 링크 삽입
+>프로젝트 개발 회고 글: https://www.회고글_링크.com
