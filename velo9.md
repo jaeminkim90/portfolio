@@ -57,7 +57,6 @@
 ## 4.1. 포스트 작성 관련 기능
 
 
-
 > ### 4.1.1. MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
   - 글 작성 시, MarkDown 문법이 적용된 포스트 결과물 미리보기를 지원합니다.
 ![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
@@ -89,79 +88,49 @@
 > ### 4.1.6. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
   - 작성 중인 포스트는 x분 마다 자동 저장됩니다.   
 
-
+<div>
 
 ---
 
 
 
+## 4.2. 포스트 조회 관련 기능
+
+
+> ### 4.2.1. (메인 화면)멀티 검색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L150)
+  - 메인 화면에서 키워드 검색 시, 포스트 내용과 태그 내용을 선택하여 검색할 수 있습니다.
+![](https://velog.velcdn.com/images/woply/post/cc69fa55-8a5c-4f5f-a672-14154c30e681/image.png)
+
+<div>
+
+> ### 4.2.2. (메인 화면)정렬 조건 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/MainController.java#L36)
+  - 메인 화면에서 포스트 조회 시, 원하는 정렬 조건을 설정하여 포스트 목록을 조회할 수 있습니다.
+![](https://velog.velcdn.com/images/woply/post/b7b64377-ea3d-4c30-8601-1c5cb4617bfe/image.png)
+
+<div>
+
+
+> ### 4.2.3. (사용자 글 목록 화면) 태그, 시리즈 정보 기반 탐색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L34)
+  - 포스트에 포함된 태그 정보와 시리즈 정보를 이용하여 관심있는 주제의 포스트를 탐색할 수 있습니다.
+![](https://velog.velcdn.com/images/woply/post/558f94ca-e3e0-4617-a23d-b51d3362d30a/image.png)
+![](https://velog.velcdn.com/images/woply/post/4584c209-1ab9-4225-bb38-a14636710791/image.png)
+
+<div>
 
 
 
+> ### 4.2.4. 포스트 상세 화면 - 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
+  - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. 
+![](https://velog.velcdn.com/images/woply/post/6a272958-1466-428c-a885-e8a580077b53/image.png)
+
+<div>
 
 
+> ### 4.2.5. 사용자 아카이브 - 좋아요, 최근 읽은 글 목록 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67)
+  - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. 
+![](https://velog.velcdn.com/images/woply/post/d50744ed-fd83-4f73-8501-8d8ce59d149c/image.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- **URL 정규식 체크** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
-  - Vue.js로 렌더링된 화면단에서, 사용자가 등록을 시도한 URL의 모양새를 정규식으로 확인합니다.
-  - URL의 모양새가 아닌 경우, 에러 메세지를 띄웁니다.
-
-- **Axios 비동기 요청** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
-  - URL의 모양새인 경우, 컨텐츠를 등록하는 POST 요청을 비동기로 날립니다.
-
-### 4.3. Controller
-
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png)
-
-- **요청 처리** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
-  - Controller에서는 요청을 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
-
-- **결과 응답** :pushpin: [코드 확인]()
-  - Service 계층에서 넘어온 로직 처리 결과(메세지)를 화면단에 응답해줍니다.
-
-### 4.4. Service
-
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_service1.png)
-
-- **Http 프로토콜 추가 및 trim()** :pushpin: [코드 확인]()
-  - 사용자가 URL 입력 시 Http 프로토콜을 생략하거나 공백을 넣은 경우,  
-  올바른 URL이 될 수 있도록 Http 프로토콜을 추가해주고, 공백을 제거해줍니다.
-
-- **URL 접속 확인** :pushpin: [코드 확인]()
-  - 화면단에서 모양새만 확인한 URL이 실제 리소스로 연결되는지 HttpUrlConnection으로 테스트합니다.
-  - 이 때, 빠른 응답을 위해 Request Method를 GET이 아닌 HEAD를 사용했습니다.
-  - (HEAD 메소드는 GET 메소드의 응답 결과의 Body는 가져오지 않고, Header만 확인하기 때문에 GET 메소드에 비해 응답속도가 빠릅니다.)
-
-  ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_service2.png)
-
-- **Jsoup 이미지, 제목 파싱** :pushpin: [코드 확인]()
-  - URL 접속 확인결과 유효하면 Jsoup을 사용해서 입력된 URL의 이미지와 제목을 파싱합니다.
-  - 이미지는 Open Graphic Tag를 우선적으로 파싱하고, 없을 경우 첫 번째 이미지와 제목을 파싱합니다.
-  - 컨텐츠에 이미지가 없을 경우, 미리 설정해둔 기본 이미지를 사용하고, 제목이 없을 경우 생략합니다.
-
-
-### 4.5. Repository
-
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_repo.png)
-
-- **컨텐츠 저장** :pushpin: [코드 확인]()
-  - URL 유효성 체크와 이미지, 제목 파싱이 끝난 컨텐츠는 DB에 저장합니다.
-  - 저장된 컨텐츠는 다시 Repository - Service - Controller를 거쳐 화면단에 송출됩니다.
+<div>
 
 </div>
 </details>
