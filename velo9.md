@@ -65,7 +65,7 @@
 <summary><b>참고 이미지 확인하기</b></summary>
 <div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
-<div>
+</div>
 </details>
 
 <br>
