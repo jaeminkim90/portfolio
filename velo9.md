@@ -63,21 +63,47 @@
   - 글 작성 시, MarkDown 문법이 적용된 포스트 결과물 미리보기를 지원합니다.<br>
 <details>
 <summary><b>참고 이미지 확인하기</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
+<div>
 </details>
 
 <br>
 
 > ### 4.1.2. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/PostController.java#L53)
-  - 신규 글 작성과 기존 글 수정을 단일 'Controller - Service - Repository에서 처리할 수 있도록 코드를 설계하였습니다.   
+  - 신규 글 작성과 기존 글 수정을 단일 'Controller - Service - Repository에서 처리할 수 있도록 코드를 설계하였습니다. 
+
+```java
+@PostMapping("/write")
+public Result write(@Valid @RequestBody PostSaveDTO postSaveDTO, HttpSession session) {
+	Post post = postService.write(postSaveDTO, getMemberId(session));
+	tagService.addTags(post, postSaveDTO.getTags());
+	tagService.removeUselessTags();
+	return new Result<>(post.getId());
+}  
+```
 
 <br>
 
 > ### 4.1.3. 포스트 전용 섬네일 지원제목 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/api/PostThumbnailFileUploader.java#L37)
   - 포스트에 대한 정보를 한 눈에 확인 할 수 있도록 섬네일 업로드를 지원합니다.<br>
+
+```java
+public PostThumbnailDTO upload(MultipartFile uploadFile) {
+		checkUploadFile(uploadFile);
+
+		PostThumbnailDTO postThumbnailDTO = getThumbnailInfo(getUploadFileName(uploadFile));
+
+		createFile(uploadFile, postThumbnailDTO);
+
+		return postThumbnailDTO;
+}
+  ```
   <details>
 <summary><b>참고 이미지 확인</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/3431869a-6424-474b-8ba5-77a60294d134/image.png)   
+</div>
 </details>
 <br>
 
@@ -85,18 +111,102 @@
 > ### 4.1.4. 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
   - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
 
+```java
+  @Transactional
+	public Post write(PostSaveDTO postSaveDTO, Long memberId) {
+		PostThumbnail postThumbnail = getPostThumbnail(postSaveDTO.getThumbnailFileName());
+		Series series = getSeries(postSaveDTO.getSeriesId());
+		Member member = getMember(memberId);
+		if (postThumbnail != null) {
+			postThumbnailRepository.save(postThumbnail);
+		}
+
+		Post post = null;
+
+		if (postSaveDTO.getPostId() == null) {
+			post = postRepository.save(postSaveDTO.toPost(member, series, postThumbnail));
+		}
+
+		if (postSaveDTO.getPostId() != null) {
+			post = postRepository.findById(postSaveDTO.getPostId()).orElseThrow();
+			post.edit(postSaveDTO.getTitle(),
+				postSaveDTO.getIntroduce(),
+				postSaveDTO.getContent(),
+				postSaveDTO.getAccess(),
+				series,
+				postThumbnail);
+		}
+
+		return post;
+	}
+  ```
+
 <details>
 <summary><b>참고 이미지 확인하기</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/e1df9acb-8e18-4b68-a4fb-dc855e9b25d0/image.png)   
+</div>
 </details>
 <br>
 
 > ### 4.1.5. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
   - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.  
+```java
+  private void setIntroduce() {
+		if (!isIntroduceNull()) {
+			return;
+		}
+		if (smallerThanMax(this.content)) {
+			this.introduce = this.content;
+			return;
+		}
+		this.introduce = this.content.substring(FIRST_INDEX, MAX_INTRODUCE_LENGTH);
+	}
+  ```
 <br>>
 
 > ### 4.1.6. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
   - 작성 중인 포스트는 x분 마다 자동 저장됩니다.   
+
+```java
+  private Long writeAlternativeTemporary(TemporaryPostWriteDTO temporaryPostWriteDTO, Long memberId) {
+		Post post = postRepository.findById(temporaryPostWriteDTO.getPostId()).orElseThrow();
+
+		if (post.getStatus().equals(PostStatus.TEMPORARY)) {
+			return writeNewTemporary(temporaryPostWriteDTO, memberId);
+		}
+
+		if (post.getTemporaryPost() != null) {
+			temporaryPostWriteDTO.setAlternativeId(post.getTemporaryPost().getId());
+		}
+
+		TemporaryPost temporaryPost = temporaryPostWriteDTO.toTemporaryPost();
+		temporaryPostRepository.save(temporaryPost);
+		postRepository.updateTempPost(post.getId(), temporaryPost);
+
+		return post.getId();
+	}
+
+	private Long writeNewTemporary(TemporaryPostWriteDTO temporaryPostWriteDTO, Long memberId) {
+		checkCountTemp(memberId);
+		Member member = getMember(memberId);
+		return postRepository.save(
+			temporaryPostWriteDTO.toPost(
+				member, postRepository.getCreatedDate(temporaryPostWriteDTO.getPostId()))).getId();
+	}
+
+	private void toggleLove(Member member, Post post) {
+		loveRepository.findByPostAndMember(post, member).ifPresentOrElse(
+			loveRepository::delete,
+			() -> loveRepository.save(
+				Love.builder()
+					.post(post)
+					.member(member)
+					.build()
+			)
+		);
+	}
+  ```
 
 <br>
 
@@ -106,29 +216,66 @@
 
 > ### 4.2.1. (메인 화면)멀티 검색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L150)
   - 메인 화면에서 키워드 검색 시, 포스트 내용과 태그 내용을 선택하여 검색할 수 있습니다.<br>
+```java
+  private BooleanBuilder searchMain(SearchCondition condition) {
+		return condition.isTagSelect() ? searchTagContent(condition.getContent()) : searchContent(condition.getContent());
+	}
+  ```
 
 <details>
 <summary><b>참고 이미지 확인하기</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/cc69fa55-8a5c-4f5f-a672-14154c30e681/image.png)
+</div>
 </details>
 <br>
 
 > ### 4.2.2. (메인 화면)정렬 조건 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/MainController.java#L36)
   - 메인 화면에서 포스트 조회 시, 원하는 정렬 조건을 설정하여 포스트 목록을 조회할 수 있습니다.<br>
+```java
+  private PageRequest getPageRequest(int page, String sortValue) {
+		Sort sort = sortValue.equals(("old")) ?
+			Sort.by(Direction.ASC, "createdDate") : Sort.by(Direction.DESC, sortValue);
+
+		return PageRequest.of(page, SIZE, sort);
+	}
+  ```
+
   <details>
 <summary><b>참고 이미지 확인하기</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/b7b64377-ea3d-4c30-8601-1c5cb4617bfe/image.png)
+</div>
 </details>
 <br>
 
 
 > ### 4.2.3. (사용자 글 목록 화면) 태그, 시리즈 정보 기반 탐색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L34)
   - 포스트에 포함된 태그 정보와 시리즈 정보를 이용하여 관심있는 주제의 포스트를 탐색할 수 있습니다.<br>
+```java
+  public Slice<Post> findPost(String nickname, String tagName, Pageable pageable) {
+		List<Post> content =
+			queryFactory.selectFrom(post)
+				.where(nicknameEq(nickname)
+					.and(searchTag(tagName))
+					.and(openPost()))
+				.offset(pageable.getOffset())
+				.limit(pageable.getPageSize() + 1)
+				.fetch();
+
+		boolean hasNext = isHasNext(content, pageable);
+
+		return new SliceImpl<>(content, pageable, hasNext);
+	}
+  ```
+
 
   <details>
 <summary><b>참고 이미지 확인하기</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/558f94ca-e3e0-4617-a23d-b51d3362d30a/image.png)
 ![](https://velog.velcdn.com/images/woply/post/4584c209-1ab9-4225-bb38-a14636710791/image.png)
+</div>
 </details>
 <br>
 
@@ -136,19 +283,59 @@
 
 > ### 4.2.4. 포스트 상세 화면 - 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
   - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. <br>
+  ```java
+  public List<Post> findPrevNextPost(Post findPost) {
+		return queryFactory
+			.select(post)
+			.from(post)
+			.where(openPost())
+			.where(post.id.eq(
+					select(post.id.max())
+						.from(post)
+						.where(post.id.lt(findPost.getId()).and(findSeries(findPost))))
+				.or(post.id.eq(
+					select(post.id.min())
+						.from(post)
+						.where(post.id.gt(findPost.getId()).and(findSeries(findPost))))))
+			.fetch();
+	}
+  ```
   <details>
 <summary><b>참고 이미지 확인하기</b></summary>
-
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/6a272958-1466-428c-a885-e8a580077b53/image.png)
+</div>
 </details>
 <br>
 
 
 > ### 4.2.5. 사용자 아카이브 - 좋아요, 최근 읽은 글 목록 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67)
   - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. <br>
+```java
+  @Override
+	public Slice<Post> findByJoinLove(Long memberId, Pageable pageable) {
+		JPAQuery<Post> query = queryFactory
+			.selectFrom(post)
+			.join(love)
+			.on(post.id.eq(love.post.id))
+			.join(post.member)
+			.on(post.member.id.eq(love.member.id))
+			.where(post.member.id.eq(memberId))
+			.offset(pageable.getOffset());
+
+		List<Post> content = getQuerydsl().applyPagination(pageable, query).limit(pageable.getPageSize() + 1).fetch();
+
+		boolean hasNext = isHasNext(content, pageable);
+
+		return new SliceImpl<>(content, pageable, hasNext);
+	}
+```
+
   <details>
 <summary><b>참고 이미지 확인하기</b></summary>
+<div markdown="1">
 ![](https://velog.velcdn.com/images/woply/post/d50744ed-fd83-4f73-8501-8d8ce59d149c/image.png)
+</div>
 </details>
 <br>
 
