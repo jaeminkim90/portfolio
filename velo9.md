@@ -55,40 +55,38 @@
 <div markdown="1">
 
 ## 4.1. 포스트 작성 관련 기능
----
 
 
-> ### MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
+
+> ### 4.1.1. MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
   - 글 작성 시, MarkDown 문법이 적용된 포스트 결과물 미리보기를 지원합니다.
 ![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
 
+<div>
 
-
-> ### 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/PostController.java#L53)
+> ### 4.1.2. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/PostController.java#L53)
   - 신규 글 작성과 기존 글 수정을 단일 'Controller - Service - Repository에서 처리할 수 있도록 코드를 설계하였습니다.   
 
+<div>
 
-
-> ### 포스트 전용 섬네일 지원제목 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/api/PostThumbnailFileUploader.java#L37)
+> ### 4.1.3. 포스트 전용 섬네일 지원제목 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/api/PostThumbnailFileUploader.java#L37)
   - 포스트에 대한 정보를 한 눈에 확인 할 수 있도록 섬네일 업로드를 지원합니다.
 ![](https://velog.velcdn.com/images/woply/post/3431869a-6424-474b-8ba5-77a60294d134/image.png)   
 
+<div>
 
 
-
-> ### 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
+> ### 4.1.4. 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
   - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다
 ![](https://velog.velcdn.com/images/woply/post/e1df9acb-8e18-4b68-a4fb-dc855e9b25d0/image.png)   
 
+<div>
 
-
-
-
-> ### 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
+> ### 4.1.5. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
   - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.  
+<div>
 
-
-> ### 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
+> ### 4.1.6. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
   - 작성 중인 포스트는 x분 마다 자동 저장됩니다.   
 
 
