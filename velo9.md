@@ -64,6 +64,7 @@
 <details>
 <summary><b>참고 이미지 확인하기</b></summary>
 ![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
+</details>
 
 <br>
 
@@ -77,14 +78,17 @@
   <details>
 <summary><b>참고 이미지 확인</b></summary>
 ![](https://velog.velcdn.com/images/woply/post/3431869a-6424-474b-8ba5-77a60294d134/image.png)   
-
+</details>
 <br>
 
 
 > ### 4.1.4. 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
   - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
-![](https://velog.velcdn.com/images/woply/post/e1df9acb-8e18-4b68-a4fb-dc855e9b25d0/image.png)   
 
+<details>
+<summary><b>참고 이미지 확인하기</b></summary>
+![](https://velog.velcdn.com/images/woply/post/e1df9acb-8e18-4b68-a4fb-dc855e9b25d0/image.png)   
+</details>
 <br>
 
 > ### 4.1.5. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
@@ -103,37 +107,49 @@
 > ### 4.2.1. (메인 화면)멀티 검색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L150)
   - 메인 화면에서 키워드 검색 시, 포스트 내용과 태그 내용을 선택하여 검색할 수 있습니다.<br>
 
+<details>
+<summary><b>참고 이미지 확인하기</b></summary>
 ![](https://velog.velcdn.com/images/woply/post/cc69fa55-8a5c-4f5f-a672-14154c30e681/image.png)
-
+</details>
 <br>
 
 > ### 4.2.2. (메인 화면)정렬 조건 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/MainController.java#L36)
   - 메인 화면에서 포스트 조회 시, 원하는 정렬 조건을 설정하여 포스트 목록을 조회할 수 있습니다.<br>
+  <details>
+<summary><b>참고 이미지 확인하기</b></summary>
 ![](https://velog.velcdn.com/images/woply/post/b7b64377-ea3d-4c30-8601-1c5cb4617bfe/image.png)
-
+</details>
 <br>
 
 
 > ### 4.2.3. (사용자 글 목록 화면) 태그, 시리즈 정보 기반 탐색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L34)
   - 포스트에 포함된 태그 정보와 시리즈 정보를 이용하여 관심있는 주제의 포스트를 탐색할 수 있습니다.<br>
+
+  <details>
+<summary><b>참고 이미지 확인하기</b></summary>
 ![](https://velog.velcdn.com/images/woply/post/558f94ca-e3e0-4617-a23d-b51d3362d30a/image.png)
 ![](https://velog.velcdn.com/images/woply/post/4584c209-1ab9-4225-bb38-a14636710791/image.png)
-
+</details>
 <br>
 
 
 
 > ### 4.2.4. 포스트 상세 화면 - 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
-  - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. <div>
-![](https://velog.velcdn.com/images/woply/post/6a272958-1466-428c-a885-e8a580077b53/image.png)
+  - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. <br>
+  <details>
+<summary><b>참고 이미지 확인하기</b></summary>
 
+![](https://velog.velcdn.com/images/woply/post/6a272958-1466-428c-a885-e8a580077b53/image.png)
+</details>
 <br>
 
 
 > ### 4.2.5. 사용자 아카이브 - 좋아요, 최근 읽은 글 목록 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67)
-  - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. <div>
+  - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. <br>
+  <details>
+<summary><b>참고 이미지 확인하기</b></summary>
 ![](https://velog.velcdn.com/images/woply/post/d50744ed-fd83-4f73-8501-8d8ce59d149c/image.png)
-
+</details>
 <br>
 
 </div>
