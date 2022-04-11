@@ -47,18 +47,77 @@
 
 
 ## 4. 핵심 기능
-이 서비스는 인기있는 블로그 서비스인 '벨로그'의 기능을 동일하게 구현한 블로그 서비스입니다. 블로그 서비스가 제공하는 글쓰기, 조회, 다른 사용자들과의 콘텐츠 상호작용이 가능합니다. 
+> velo9는 단순하고 직관적인 사용이 가능한 웹 기반 블로그 서비스입니다. velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니다. 누구나 쉽고 간편하게 포스트 작성이 가능하며, 태그와 시리즈 정보를 활용해 포스트를 빠르게 탐색할 수 있습니다.
 
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 
 <div markdown="1">
 
-### 4.1. 전체 흐름
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow1.png)
+## 4.1. 포스트 작성 관련 기능
+---
 
-### 4.2. 사용자 요청
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
+
+> ### MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
+  - 글 작성 시, MarkDown 문법이 적용된 포스트 결과물 미리보기를 지원합니다.
+![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
+
+
+
+> ### 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/PostController.java#L53)
+  - 신규 글 작성과 기존 글 수정을 단일 'Controller - Service - Repository에서 처리할 수 있도록 코드를 설계하였습니다.   
+
+
+
+> ### 포스트 전용 섬네일 지원제목 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/api/PostThumbnailFileUploader.java#L37)
+  - 포스트에 대한 정보를 한 눈에 확인 할 수 있도록 섬네일 업로드를 지원합니다.
+![](https://velog.velcdn.com/images/woply/post/3431869a-6424-474b-8ba5-77a60294d134/image.png)   
+
+
+
+
+> ### 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
+  - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다
+![](https://velog.velcdn.com/images/woply/post/e1df9acb-8e18-4b68-a4fb-dc855e9b25d0/image.png)   
+
+
+
+
+
+> ### 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
+  - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.  
+
+
+> ### 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
+  - 작성 중인 포스트는 x분 마다 자동 저장됩니다.   
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - **URL 정규식 체크** :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/36e7589166724edad9ae4220783df3ed89b3cc74/src/main/java/teamexpress/velo9/Velo9Application.java#L7)
   - Vue.js로 렌더링된 화면단에서, 사용자가 등록을 시도한 URL의 모양새를 정규식으로 확인합니다.
