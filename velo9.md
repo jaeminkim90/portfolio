@@ -83,9 +83,14 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 > ### 4.1.4. 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
   - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
 
+1번
 ![](https://velog.velcdn.com/images/woply/post/f20908bb-1072-45e8-bfbc-fd436f363def/image.jpg)
 <br>
+2번
 ![](https://velog.velcdn.com/images/woply/post/0be200bd-9b84-46b5-8609-ea4ce86f4cf6/image.jpg)
+<br>
+3번
+![](https://velog.velcdn.com/images/woply/post/c0032338-11cb-4e64-88df-2e3feaabd933/image.jpg)
 
 <br>
 
