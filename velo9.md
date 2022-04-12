@@ -88,63 +88,17 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 <br>
 
 > ### 4.1.5. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
-  - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.  
-```java
-private void setIntroduce() {
-	if (!isIntroduceNull()) {
-		return;
-	}
-	if (smallerThanMax(this.content)) {
-		this.introduce = this.content;
-		return;
-	}
-	this.introduce = this.content.substring(FIRST_INDEX, MAX_INTRODUCE_LENGTH);
-}
-```
-<br>>
+  - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.<br>
+
+
+![](https://velog.velcdn.com/images/woply/post/c4751d54-f985-44f3-ad1b-cd3151d481d9/image.jpg)
+
+<br>
 
 > ### 4.1.6. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
-  - 작성 중인 포스트는 x분 마다 자동 저장됩니다.   
+  - 작성 중인 포스트는 x분 마다 자동 저장됩니다.<br>   
 
-```java
-private Long writeAlternativeTemporary(TemporaryPostWriteDTO temporaryPostWriteDTO, Long memberId) {
-	Post post = postRepository.findById(temporaryPostWriteDTO.getPostId()).orElseThrow();
-
-	if (post.getStatus().equals(PostStatus.TEMPORARY)) {
-		return writeNewTemporary(temporaryPostWriteDTO, memberId);
-	}
-
-	if (post.getTemporaryPost() != null) {
-		temporaryPostWriteDTO.setAlternativeId(post.getTemporaryPost().getId());
-	}
-
-	TemporaryPost temporaryPost = temporaryPostWriteDTO.toTemporaryPost();
-	temporaryPostRepository.save(temporaryPost);
-	postRepository.updateTempPost(post.getId(), temporaryPost);
-
-	return post.getId();
-}
-
-private Long writeNewTemporary(TemporaryPostWriteDTO temporaryPostWriteDTO, Long memberId) {
-	checkCountTemp(memberId);
-	Member member = getMember(memberId);
-	return postRepository.save(
-		temporaryPostWriteDTO.toPost(
-			member, postRepository.getCreatedDate(temporaryPostWriteDTO.getPostId()))).getId();
-}
-
-private void toggleLove(Member member, Post post) {
-	loveRepository.findByPostAndMember(post, member).ifPresentOrElse(
-		loveRepository::delete,
-		() -> loveRepository.save(
-			Love.builder()
-				.post(post)
-				.member(member)
-				.build()
-		)
-	);
-}
-  ```
+![](https://velog.velcdn.com/images/woply/post/f3f1022a-bc3c-4da2-b5f6-0bb4b0c45ce8/image.jpg)
 
 <br>
 
