@@ -84,6 +84,8 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
   - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
 
 ![](https://velog.velcdn.com/images/woply/post/f20908bb-1072-45e8-bfbc-fd436f363def/image.jpg)
+<br>
+![](https://velog.velcdn.com/images/woply/post/0be200bd-9b84-46b5-8609-ea4ce86f4cf6/image.jpg)
 
 <br>
 
