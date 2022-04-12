@@ -98,7 +98,7 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 > ### 4.1.6. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
   - 작성 중인 포스트는 x분 마다 자동 저장됩니다.<br>   
 
-![](https://velog.velcdn.com/images/woply/post/9034bc9d-c524-4cb8-a843-9524826cd0c4/image.jpg)
+![](https://velog.velcdn.com/images/woply/post/fac2539f-f761-4c6e-af4c-f8f76c207828/image.jpg)
 
 <br>
 
