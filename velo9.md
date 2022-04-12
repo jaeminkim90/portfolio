@@ -83,42 +83,8 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 > ### 4.1.4. 태그, 시리즈 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
   - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
 
-```java
-@Transactional
-public Post write(PostSaveDTO postSaveDTO, Long memberId) {
-	PostThumbnail postThumbnail = getPostThumbnail(postSaveDTO.getThumbnailFileName());
-	Series series = getSeries(postSaveDTO.getSeriesId());
-	Member member = getMember(memberId);
-	if (postThumbnail != null) {
-		postThumbnailRepository.save(postThumbnail);
-	}
+![](https://velog.velcdn.com/images/woply/post/f20908bb-1072-45e8-bfbc-fd436f363def/image.jpg)
 
-	Post post = null;
-
-	if (postSaveDTO.getPostId() == null) {
-		post = postRepository.save(postSaveDTO.toPost(member, series, postThumbnail));
-	}
-
-	if (postSaveDTO.getPostId() != null) {
-		post = postRepository.findById(postSaveDTO.getPostId()).orElseThrow();
-		post.edit(postSaveDTO.getTitle(),
-			postSaveDTO.getIntroduce(),
-			postSaveDTO.getContent(),
-			postSaveDTO.getAccess(),
-			series,
-			postThumbnail);
-	}
-
-	return post;
-}
-```
-
-<details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/e1df9acb-8e18-4b68-a4fb-dc855e9b25d0/image.png)   
-</div>
-</details>
 <br>
 
 > ### 4.1.5. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
