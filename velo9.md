@@ -61,17 +61,11 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 
 > ### 4.1.1. MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
   - 글 작성 시, MarkDown 문법이 적용된 포스트 결과물 미리보기를 지원합니다.<br>
-<details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/5319c61f-512c-42bf-9546-9d7bb8f45f52/image.png)
-</div>
-</details>
 
 <br>
 
-> ### 4.1.2. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/PostController.java#L53)
-  - 신규 글 작성과 기존 글 수정을 단일 'Controller - Service - Repository에서 처리할 수 있도록 코드를 설계하였습니다. 
+> ### 4.1.2. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
+  - 신규 글 작성과 기존 글 수정을 단일 `Controller - Service - Repository`에서 처리할 수 있도록 코드를 설계하였습니다. 
 
 ![](https://velog.velcdn.com/images/woply/post/d241af52-5dd7-4a58-9c0b-1e680df33874/image.jpg)
 
