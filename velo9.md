@@ -73,7 +73,7 @@
 > ### 4.1.2. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/PostController.java#L53)
   - 신규 글 작성과 기존 글 수정을 단일 'Controller - Service - Repository에서 처리할 수 있도록 코드를 설계하였습니다. 
 
-![]https://velog.velcdn.com/images/woply/post/56a9c032-7c0c-4b17-9ae0-5b9ffde7627d/image.png
+![](https://velog.velcdn.com/images/woply/post/56a9c032-7c0c-4b17-9ae0-5b9ffde7627d/image.png)
 
 
 <br>
