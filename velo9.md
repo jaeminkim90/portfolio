@@ -106,13 +106,14 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 ## 4.2. 포스트 조회 관련 기능
 
 
-> ### 4.2.1. (메인 화면)멀티 검색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L150)
+> ### 4.2.1. (메인 화면)멀티 검색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L50)
   - 메인 화면에서 키워드 검색 시, 포스트 내용과 태그 내용을 선택하여 검색할 수 있습니다.<br>
-```java
- private BooleanBuilder searchMain(SearchCondition condition) {
-	return condition.isTagSelect() ? searchTagContent(condition.getContent()) : searchContent(condition.getContent());
-}
-```
+
+
+![](https://velog.velcdn.com/images/woply/post/319e767f-a40d-4bcb-a90a-494f79a7577b/image.jpg)
+
+<br>
+
 
 <details>
 <summary><b>참고 이미지 확인하기</b></summary>
