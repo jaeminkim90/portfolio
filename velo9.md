@@ -58,50 +58,50 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 
 ## 4.1. 포스트 작성 관련 기능
 
+<br>
 
-> ### 4.1.1. MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
+> ### 4.1.1. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
+  - 신규 글 작성과 기존 글 수정을 단일 `Controller - Service - Repository`에서 처리할 수 있도록 코드를 설계하였습니다. <br>
+
+![](https://velog.velcdn.com/images/woply/post/22a12441-8864-44c5-bd5d-b7e130443520/image.jpg)
+
+
+
+<br>
+
+> ### 4.1.2. 포스트용 섬네일 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/api/PostThumbnailFileUploader.java#L37)
+  - 포스트에 대한 정보를 한 눈에 확인 할 수 있도록 섬네일 업로드를 지원합니다.<br>
+
+![](https://velog.velcdn.com/images/woply/post/f88d7a93-0aba-4715-b8b4-81effc6592bd/image.jpg)
+
+<br>
+
+
+> ### 4.1.3. 태그, 시리즈 등록 :pushpin: [태그 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/TagService.java#L26) / [시리즈 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/SeriesService.java#L32)
+  - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
+
+![](https://velog.velcdn.com/images/woply/post/2d55f142-f0ef-4645-92b7-b007c3472fd5/image.jpg)
+
+<br>
+
+> ### 4.1.4. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
+  - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.<br>
+
+![](https://velog.velcdn.com/images/woply/post/c0adb39e-71d2-41e6-a4c7-bab184a419c6/image.jpg)
+
+<br>
+
+> ### 4.1.5. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
+  - 작성 중인 포스트는 x분 마다 자동 저장됩니다.<br>   
+
+![](https://velog.velcdn.com/images/woply/post/110c7d6f-95b5-44e4-a0e8-0980a6eb8901/image.jpg)
+
+<br>
+
+> ### 4.1.6. MarkDown 미리보기 :pushpin: [코드 확인](www.naver.com)
   - 글 작성 시, MarkDown 문법이 적용된 포스트 결과물 미리보기를 지원합니다.<br>
 
 <br>
-
-> ### 4.1.2. 글 작성과 글 수정을 한 곳에서 처리 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L61)
-  - 신규 글 작성과 기존 글 수정을 단일 `Controller - Service - Repository`에서 처리할 수 있도록 코드를 설계하였습니다. <br>
-
-![](https://velog.velcdn.com/images/woply/post/ef3309a3-75bf-4313-88a3-27e57de97955/image.jpg)
-
-
-<br>
-
-> ### 4.1.3. 포스트용 섬네일 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/api/PostThumbnailFileUploader.java#L37)
-  - 포스트에 대한 정보를 한 눈에 확인 할 수 있도록 섬네일 업로드를 지원합니다.<br>
-
-  ![](https://velog.velcdn.com/images/woply/post/d26f0daf-ca85-47bf-9c9c-91f11715a3d9/image.jpg)
-
-<br>
-
-
-> ### 4.1.4. 태그, 시리즈 등록 :pushpin: [태그 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/TagService.java#L26) / [시리즈 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/SeriesService.java#L32)
-  - 포스트 내용을 쉽게 파악하고, 조회할 수 있도록 태그와 시리즈를 추가할 수 있습니다<br>
-
-![](https://velog.velcdn.com/images/woply/post/6759aa54-a31e-4436-a0b5-e9607c080653/image.jpg)
-
-<br>
-
-> ### 4.1.5. 포스트 소개글 자동 등록 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/dto/PostSaveDTO.java#L50)
-  - 포스트 소개글 미입력시, 본문 내용의 150자를 소개글로 자동 등록합니다.<br>
-
-
-![](https://velog.velcdn.com/images/woply/post/c4751d54-f985-44f3-ad1b-cd3151d481d9/image.jpg)
-
-<br>
-
-> ### 4.1.6. 임시 저장 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/service/PostService.java#L169)
-  - 작성 중인 포스트는 x분 마다 자동 저장됩니다.<br>   
-
-![](https://velog.velcdn.com/images/woply/post/fac2539f-f761-4c6e-af4c-f8f76c207828/image.jpg)
-
-<br>
-
 
 ## 4.2. 포스트 조회 관련 기능
 
