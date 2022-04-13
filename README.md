@@ -18,7 +18,7 @@
 ## :pushpin: Projects
 ### 1. [velo9](https://github.com/jaeminkim90/portfolio/blob/5fcbb35a9c2741375abde2354436ee9bfc827ed6/velo9.md)
 
->`velo9`는 단순하고 직관적인 사용이 가능한 `웹 기반 블로그 서비스`입니다.
+>`velo9`는 단순하고 직관적인 사용이 가능한 `웹 기반 블로그 서비스`입니다.   
 >개발 기간: 2022.2.21 ~ 2022.4.16  
 >  
 >기술 스택:  
