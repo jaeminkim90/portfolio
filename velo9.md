@@ -124,13 +124,15 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 <br>
 
 
-> ### 4.2.3. (사용자 글 목록 화면) 태그, 시리즈 정보 기반 탐색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L34)
+> ### 4.2.3. (사용자 글 목록 화면) 태그, 시리즈 정보 기반 포스트 탐색 :pushpin: [태그 활용 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L34) / [시리즈 활용 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L102)
   - 포스트에 포함된 태그 정보와 시리즈 정보를 이용하여 관심있는 주제의 포스트를 탐색할 수 있습니다.<br>
+
+ ![](https://velog.velcdn.com/images/woply/post/1bd41fef-c0ea-4f06-a44e-f6f78a58188f/image.jpg)
 
   <br>
 
 
-> ### 4.2.4. 포스트 상세 화면 - 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
+> ### 4.2.4. (포스트 상세 화면) 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
   - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. <br>
 
 ![](https://velog.velcdn.com/images/woply/post/3a585f56-f5e5-4223-a2f5-f3471ff8f1fa/image.jpg)
@@ -138,9 +140,10 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 <br>
 
 
-> ### 4.2.5. 사용자 아카이브 - 좋아요, 최근 읽은 글 목록 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67)
+> ### 4.2.5. (사용자 아카이브) 좋아요, 최근 읽은 글 목록 지원 :pushpin: [좋아요 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67) / [최근]
   - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. <br>
 
+![](https://velog.velcdn.com/images/woply/post/e981cfa1-a0ee-4f83-8fc1-e95331aa91b9/image.jpg)
 
 <br>
 
