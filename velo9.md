@@ -140,7 +140,7 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 <br>
 
 
-> ### 4.2.5. (사용자 아카이브) 좋아요, 최근 읽은 글 목록 지원 :pushpin: [좋아요 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67) / [최근]
+> ### 4.2.5. (사용자 아카이브) 좋아요, 최근 읽은 글 목록 지원 :pushpin: [좋아요 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67) / [읽은 글 관련 코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L85)
   - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. <br>
 
 ![](https://velog.velcdn.com/images/woply/post/e981cfa1-a0ee-4f83-8fc1-e95331aa91b9/image.jpg)
