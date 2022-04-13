@@ -16,16 +16,16 @@
 </br>
 
 ## :pushpin: Projects
-### 1. [velo9](https://github.com/team-express/velo9)
-[예시로 만든 프로젝트 상세 설명 링크](https://github.com/team-express/velo9)
->블로그 서비스 '벨로그'를 벤치마킹한 개인용 블로그 서비스  
+### 1. [velo9](https://github.com/jaeminkim90/portfolio/blob/5fcbb35a9c2741375abde2354436ee9bfc827ed6/velo9.md)
+
+>`velo9`는 단순하고 직관적인 사용이 가능한 `웹 기반 블로그 서비스`입니다.
 >개발 기간: 2022.2.21 ~ 2022.4.16  
 >  
 >기술 스택:  
 >Java 8 / Spring Boot / Gradle / Spring Data JPA / QueryDSL  
->MySQL / Spring Security / React  
+>MySQL / Spring Security / React / SCSS
 >  
->[프로젝트 상세 설명](https://github.com/team-express/velo9) 참고
+>[프로젝트 상세 설명](https://github.com/jaeminkim90/portfolio/blob/5fcbb35a9c2741375abde2354436ee9bfc827ed6/velo9.md) 참고
 
 ---
 
