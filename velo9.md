@@ -133,6 +133,7 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 > ### 4.2.4. 포스트 상세 화면 - 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
   - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. <br>
 
+![](https://velog.velcdn.com/images/woply/post/3a585f56-f5e5-4223-a2f5-f3471ff8f1fa/image.jpg)
 
 <br>
 
