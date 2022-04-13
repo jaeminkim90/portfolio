@@ -103,6 +103,7 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 
 <br>
 
+
 ## 4.2. 포스트 조회 관련 기능
 
 
@@ -115,121 +116,31 @@ velo9는 블로그 활동에 필요한 다양한 편의 기능을 제공합니�
 <br>
 
 
-<details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/cc69fa55-8a5c-4f5f-a672-14154c30e681/image.png)
-</div>
-</details>
-<br>
-
 > ### 4.2.2. (메인 화면)정렬 조건 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/controller/MainController.java#L36)
   - 메인 화면에서 포스트 조회 시, 원하는 정렬 조건을 설정하여 포스트 목록을 조회할 수 있습니다.<br>
-```java
- private PageRequest getPageRequest(int page, String sortValue) {
-	Sort sort = sortValue.equals(("old")) ?
-		Sort.by(Direction.ASC, "createdDate") : Sort.by(Direction.DESC, sortValue);
 
-	return PageRequest.of(page, SIZE, sort);
-}
-```
+![](https://velog.velcdn.com/images/woply/post/5130ab71-9dc6-4641-a77c-2eda2c90a2ef/image.jpg)
 
-  <details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/b7b64377-ea3d-4c30-8601-1c5cb4617bfe/image.png)
-</div>
-</details>
 <br>
 
 
 > ### 4.2.3. (사용자 글 목록 화면) 태그, 시리즈 정보 기반 탐색 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L34)
   - 포스트에 포함된 태그 정보와 시리즈 정보를 이용하여 관심있는 주제의 포스트를 탐색할 수 있습니다.<br>
-```java
-public Slice<Post> findPost(String nickname, String tagName, Pageable pageable) {
-	List<Post> content =
-		queryFactory.selectFrom(post)
-			.where(nicknameEq(nickname)
-				.and(searchTag(tagName))
-				.and(openPost()))
-			.offset(pageable.getOffset())
-			.limit(pageable.getPageSize() + 1)
-			.fetch();
 
-	boolean hasNext = isHasNext(content, pageable);
-
-	return new SliceImpl<>(content, pageable, hasNext);
-}
-```
-
-
-<details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/558f94ca-e3e0-4617-a23d-b51d3362d30a/image.png)
-![](https://velog.velcdn.com/images/woply/post/4584c209-1ab9-4225-bb38-a14636710791/image.png)
-</div>
-</details>
-<br>
-
+  <br>
 
 
 > ### 4.2.4. 포스트 상세 화면 - 이전 글, 다음 글 보기 지원  :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L116)
   - (동일한 시리즈 정보를 가지고 있거나, 등록된 순서를 기반으로) 현재 보고 있는 포스트의 이전 글과 다음 글을 보여 줍니다. <br>
-```java
- public List<Post> findPrevNextPost(Post findPost) {
-	return queryFactory
-		.select(post)
-		.from(post)
-		.where(openPost())
-		.where(post.id.eq(
-				select(post.id.max())
-					.from(post)
-					.where(post.id.lt(findPost.getId()).and(findSeries(findPost))))
-			.or(post.id.eq(
-				select(post.id.min())
-					.from(post)
-					.where(post.id.gt(findPost.getId()).and(findSeries(findPost))))))
-		.fetch();
-}
-```
-  <details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/6a272958-1466-428c-a885-e8a580077b53/image.png)
-</div>
-</details>
+
+
 <br>
 
 
 > ### 4.2.5. 사용자 아카이브 - 좋아요, 최근 읽은 글 목록 지원 :pushpin: [코드 확인](https://github.com/team-express/velo9/blob/fb2cdc52f5a47e4bb1afaa4b15ce39540d57f85c/src/main/java/teamexpress/velo9/post/domain/PostRepositoryCustomImpl.java#L67)
   - 사용자가 '읽은 적'이 있는 모든 포스트와 '좋아요'를 누른 모든 포스트를 별도로 보여줍니다. <br>
-```java
-@Override
-public Slice<Post> findByJoinLove(Long memberId, Pageable pageable) {
-	JPAQuery<Post> query = queryFactory
-		.selectFrom(post)
-		.join(love)
-		.on(post.id.eq(love.post.id))
-		.join(post.member)
-		.on(post.member.id.eq(love.member.id))
-		.where(post.member.id.eq(memberId))
-		.offset(pageable.getOffset());
 
-	List<Post> content = getQuerydsl().applyPagination(pageable, query).limit(pageable.getPageSize() + 1).fetch();
 
-	boolean hasNext = isHasNext(content, pageable);
-
-	return new SliceImpl<>(content, pageable, hasNext);
-}
-```
-
-  <details>
-<summary><b>참고 이미지 확인하기</b></summary>
-<div markdown="1">
-![](https://velog.velcdn.com/images/woply/post/d50744ed-fd83-4f73-8501-8d8ce59d149c/image.png)
-</div>
-</details>
 <br>
 
 </div>
